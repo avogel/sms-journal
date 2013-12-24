@@ -10,8 +10,12 @@ class EntriesController < ApplicationController
     def process_text
         message_body = params["Body"]
         from_number = params["From"]
+        puts "LOGGGGGGGGIIIIIINNNNNNNNGGGGGGG"
+        puts from_number
+        puts message_body
         user = User.find_by(phone_number: from_number)
         entry = Entry.new()
+        puts user.phone_number
         entry.body = message_body
         entry.user = user
         entry.save()

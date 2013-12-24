@@ -3,7 +3,11 @@ SmsJournal::Application.routes.draw do
   resources :users
 
   resources :users do
-      resources :entries
+      resources :entries do
+        member do
+          get :process_text
+        end
+      end
   end
   resources :sessions
   get "log_out" => "sessions#destroy"
