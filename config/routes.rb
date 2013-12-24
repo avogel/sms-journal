@@ -5,7 +5,7 @@ SmsJournal::Application.routes.draw do
   resources :users do
       resources :entries do
         member do
-          get :process_text
+          post :process_text
         end
       end
   end
