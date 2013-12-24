@@ -1,5 +1,6 @@
 SmsJournal::Application.routes.draw do
   resources :entries
+  resources :users
 
   resources :users do
       resources :entries
