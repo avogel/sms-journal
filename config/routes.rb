@@ -3,12 +3,10 @@ SmsJournal::Application.routes.draw do
   resources :users
 
   resources :users do
-      resources :entries do
-        member do
-          post :process_text
-        end
-      end
+      resources :entries
   end
+
+  post "entries/process_text" => "entries#process_text"
   resources :sessions
   get "log_out" => "sessions#destroy"
   get "log_in" => "sessions#new"
