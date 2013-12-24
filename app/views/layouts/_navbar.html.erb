@@ -1,0 +1,11 @@
+<div class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="brand" href = "<% root_url %>">SMS-Journal</a>
+
+        <% if current_user %>
+            <ul class="nav pull-right">
+                <li> <%= link_to "Log Out", "/log_out"%></li>
+            </ul>
+        <% end %>
+    </div>
+</div>
