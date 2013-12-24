@@ -28,7 +28,7 @@ gem 'omniauth-venmo'
 gem 'sass-rails', '~> 4.0.0'
 
 # twitter bootstrap css & javascript toolkit
-gem 'twitter-bootswatch-rails', '~> 3.0.0'
+gem 'twitter-bootswatch-rails', '~> 3.0.2'
 
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
