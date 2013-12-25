@@ -1,27 +1,13 @@
-<h1>Listing entries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.body %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h1>Journal Entries</h1>
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-8">
+    <% @entries_by_date.each do|date|%>
+        <div class="panel-body">
+        <% date.each do |entry| %>
+            <h3><%= entry.created_at.to_date%> </h3>
+            <p><%= entry.body %> </p>
+        <% end %>
+        </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Entry', new_entry_path %>
+    </div>

@@ -10,7 +10,9 @@
     <%= render partial: "layouts/navbar", locals: {current_user: @current_user}%>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-<%= yield %>
+    <div class="container">
+    <%= yield %>
+    </div>
 
 </body>
 </html>

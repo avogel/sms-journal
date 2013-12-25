@@ -6,7 +6,7 @@ SmsJournal::Application.routes.draw do
       resources :entries
   end
 
-  post "entries/process_text" => "entries#process_text"
+  post "entries/process_text" => "entries#process_sms"
   resources :sessions
   get "log_out" => "sessions#destroy"
   get "log_in" => "sessions#new"

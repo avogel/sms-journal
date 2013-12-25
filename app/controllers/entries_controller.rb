@@ -6,20 +6,17 @@ class EntriesController < ApplicationController
     # GET /entries
     # GET /entries.json
     def index
-        @entries = current_user.entries.all
+        @entries_by_date = current_user.entries_by_date
     end
 
-    def process_text
+    def process_sms
         message_body = params["Body"]
         from_number = params["From"]
-        logger.debug "LOGGGGGGGGIIIIIINNNNNNNNGGGGGGG"
+        logger.debug "processing sms"
         logger.debug from_number
         logger.debug message_body
         user = User.find_by(phone_number: from_number)
-        entry = Entry.new()
-        logger.debug user.phone_number
-        entry.body = message_body
-        entry.user = user
+        entry = Entry.new(:body => message_body, :user => user, :submit_date => Date.today)
         entry.save()
     end
 
