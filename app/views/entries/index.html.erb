@@ -1,12 +1,14 @@
-<h1>Journal Entries</h1>
-    <div class="col-lg-4">
+<h1 class="col-lg-offset-3">Journal Entries</h1>
+    <div class="col-lg-3">
     </div>
-    <div class="col-lg-8">
-    <% @entries_by_date.each do|date|%>
+    <div class="col-lg-9">
+    <% @entries_by_date.keys.each do|date|%>
         <div class="panel-body">
-        <% date.each do |entry| %>
-            <h3><%= entry.created_at.to_date%> </h3>
+        <h3><%= date.strftime("%A, %B %d, %Y") %> </h3>
+        <% @entries_by_date[date].each do |entry| %>
+            <p><small><%= entry.created_at.strftime("%l:%M %p") %></small></p>
             <p><%= entry.body %> </p>
+            <hr>
         <% end %>
         </div>
     <% end %>

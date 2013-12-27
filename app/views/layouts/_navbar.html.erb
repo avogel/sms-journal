@@ -3,8 +3,10 @@
         <div class="navbar-header">
             <%= link_to "SMS-Journal", root_url, :class => "navbar-brand" %>
         </div>
+        <% if current_user %>
         <ul class="nav navbar-nav pull-right">
             <li><%= link_to "Log Out", "/log_out" %></li>
         </ul>
+        <% end %>
     </div>
 </div>

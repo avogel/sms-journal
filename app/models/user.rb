@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
 
 
     def submit_dates
-        dates = self.entries.select(:submit_date).distinct
+        distinct_dated_entries = self.entries.select(:submit_date).distinct
+        dates = distinct_dated_entries.map!{|entry| entry.submit_date}
     end
 
     def get_entries_from(date)
@@ -36,9 +37,9 @@ class User < ActiveRecord::Base
         dates = self.submit_dates
         hash = {}
         dates.each do |date|
-            hash[date] = Entry.get_entries_from(date)
+            hash[date] = self.get_entries_from(date)
         end
-        return hash
+        hash
     end
 
     private

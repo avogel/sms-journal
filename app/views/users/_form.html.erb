@@ -1,36 +1,51 @@
-<%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-            <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-                <% end %>
-            </ul>
+<div class="well col-lg-6 col-lg-offset-3 login">
+    <fieldset>
+        <Legend><h2>Sign Up</h2></Legend>
+        <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <ul>
+                    <% @user.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <div class="form-group">
+            <label for="user_email" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="user_email" placeholder="Email" name="user[email]">
+            </div>
         </div>
-    <% end %>
-    <div class="well">
-        <div class="field">
-            <%= f.label :email %><br>
-            <%= f.text_field :email %>
+        <br>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="user_phone_number" class="col-lg-2 control-label">Phone Number</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="user_phone_number" placeholder="Phone Number" name="user[phone_number]">
         </div>
-        <div class="field">
-            <%= f.label :phone_number%><br>
-            <%= f.text_field :phone_number %>
         </div>
-        <div class="field">
-            <%= f.label :password%><br>
-            <%= f.password_field :password %>
+        <br><br>
+        <div class="form-group">
+            <label for="user_password" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="user_password" placeholder="Password" name="user[password]">
         </div>
-        <div class="field">
-            <%= f.label :password_confirmation, 'Confirm Password'%><br>
-            <%= f.password_field :password_confirmation %>
         </div>
-    </div>
-
-
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-<% end %>
+        <br><br>
+        <div class="form-group">
+            <label for="user_password_confirmation" class="col-lg-2 control-label">Confirm Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="user_password_confirmation" placeholder="Password" name="user[password_confirmation]">
+        </div>
+        </div>
+        <br><br>
+        <%= f.submit "Sign Up", class: "btn btn-large btn-primary pull-right" %>
+        <br>
+        <br>
+        <% end %>
+    </fieldset>
+    <p class="pull-right">Already have an account? <%= link_to "Sign in now!", log_in_url %></p>
+</div>

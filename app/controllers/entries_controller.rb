@@ -16,8 +16,11 @@ class EntriesController < ApplicationController
         logger.debug from_number
         logger.debug message_body
         user = User.find_by(phone_number: from_number)
-        entry = Entry.new(:body => message_body, :user => user, :submit_date => Date.today)
-        entry.save()
+        if user.entries.any?{|entry| entry.created_at > 10.minutes.ago}
+            entry = user.entries.last.body += message_body
+        else
+            entry = Entry.create(:body => message_body, :user => user, :submit_date => Date.today)
+        end
     end
 
     #send comfirmation text after an entry is successfully made
