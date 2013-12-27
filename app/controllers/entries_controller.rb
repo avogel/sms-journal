@@ -3,10 +3,18 @@ class EntriesController < ApplicationController
     before_action :require_login, only: [:index, :show, :edit, :destroy]
 
     skip_before_filter :verify_authenticity_token, :only => [:process_text]
-    # GET /entries
-    # GET /entries.json
+
     def index
         @entries_by_date = current_user.entries_by_date
+    end
+
+    # GET /entries/1
+    # GET /entries/1.json
+    def show
+    end
+
+    # GET /entries/1/edit
+    def edit
     end
 
     def process_sms
@@ -25,58 +33,6 @@ class EntriesController < ApplicationController
 
     #send comfirmation text after an entry is successfully made
     def comfirm_text
-    end
-
-    # GET /entries/1
-    # GET /entries/1.json
-    def show
-    end
-
-    # GET /entries/new
-    def new
-        @entry = Entry.new
-    end
-
-    # GET /entries/1/edit
-    def edit
-    end
-
-    # POST /entries
-    # POST /entries.json
-    def create
-        @entry = Entry.new(entry_params)
-        @entry.user = current_user
-
-        if @entry.save
-            redirect_to root_url
-            flash["notice"] = "New Entry was created successfully"
-        else
-            render 'new'
-        end
-  end
-
-  # PATCH/PUT /entries/1
-  # PATCH/PUT /entries/1.json
-    def update
-        respond_to do |format|
-            if @entry.update(entry_params)
-                format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
-                format.json { head :no_content }
-            else
-                format.html { render action: 'edit' }
-                format.json { render json: @entry.errors, status: :unprocessable_entity }
-            end
-        end
-    end
-
-    # DELETE /entries/1
-    # DELETE /entries/1.json
-    def destroy
-        @entry.destroy
-        respond_to do |format|
-            format.html { redirect_to entries_url }
-            format.json { head :no_content }
-        end
     end
 
     private

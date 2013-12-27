@@ -1,9 +1,9 @@
 SmsJournal::Application.routes.draw do
-  resources :entries
-  resources :users
+
+  resources :entries, only: [:index, :show, :edit]
 
   resources :users do
-      resources :entries
+      resources :entries, only: [:index, :show, :edit]
   end
 
   post "entries/process_text" => "entries#process_sms"
